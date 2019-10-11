@@ -242,6 +242,7 @@ class ImportPrestashopProducts(models.TransientModel):
                 qty = self._get_stock(stock_id)
             vals['qty_available'] = qty
         data = product_data
+        description_sale = data.get('description_short')
         if type(data['description_short']['language'])==list:
             for pro_name in data['description_short']['language']:
                 if pro_name['attrs']['id'] == channel_id.ps_language_id:
