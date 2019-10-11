@@ -76,7 +76,7 @@ class ImportPrestashopProducts(models.TransientModel):
             message += 'Error while getting the attribute data'
         if type(data['name']['language'])==list:
             for cat_name in data['name']['language']:
-                if cat_name['attrs']['id'] == self.channel_id.ps_language_id:
+                if cat_name['attrs']['id'] == self.channel_id.ps_language_id[-1:]:
                     attr_val_name = cat_name['value']
         else:
             attr_val_name = data.get('name')['language']['value']
@@ -88,7 +88,7 @@ class ImportPrestashopProducts(models.TransientModel):
             message += 'Error while getting the country data'
         if type(attr_data['name']['language'])==list:
             for cat_name in attr_data['name']['language']:
-                if cat_name['attrs']['id'] == self.channel_id.ps_language_id:
+                if cat_name['attrs']['id'] == self.channel_id.ps_language_id[-1:]:
                     attr_name = cat_name['value']
         else:
             attr_name = attr_data.get('name')['language']['value']
@@ -205,7 +205,7 @@ class ImportPrestashopProducts(models.TransientModel):
             extra_categ_ids = ','.join(category_ids)
         if type(product_data['name']['language'])==list:
             for pro_name in product_data['name']['language']:
-                if pro_name['attrs']['id'] == channel_id.ps_language_id:
+                if pro_name['attrs']['id'] == channel_id.ps_language_id[-1:]:
                     name = pro_name['value']
         else:
             name = product_data.get('name')['language']['value']
@@ -241,7 +241,7 @@ class ImportPrestashopProducts(models.TransientModel):
         data = product_data
         if type(data['description_short']['language'])==list:
             for pro_name in data['description_short']['language']:
-                if pro_name['attrs']['id'] == channel_id.ps_language_id:
+                if pro_name['attrs']['id'] == channel_id.ps_language_id[-1:]:
                     try:
                         description_sale = html2text.html2text(pro_name['value'])
                     except:
