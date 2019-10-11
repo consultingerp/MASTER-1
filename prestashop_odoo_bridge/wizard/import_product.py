@@ -203,6 +203,7 @@ class ImportPrestashopProducts(models.TransientModel):
             else:
                 category_ids = [cat_data['id']]
             extra_categ_ids = ','.join(category_ids)
+        name = product_data.get('name')['language']['value']
         if type(product_data['name']['language'])==list:
             for pro_name in product_data['name']['language']:
                 if pro_name['attrs']['id'] == channel_id.ps_language_id:
