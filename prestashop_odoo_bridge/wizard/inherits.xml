@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="export_prestashop_templates_form" model="ir.ui.view">
+            <field name="name">export.prestashop.templates.form</field>
+            <field name="model">export.templates</field>
+          	<field name="inherit_id" ref="odoo_multi_channel_sale.export_odoo_templates_form" />
+       		 <field name="arch" type="xml">
+                <xpath expr="//button[@name='cancel']" position="before">
+                	<button
+                         attrs="{ 'invisible':[('channel','not in',['prestashop'])]}"
+                		name="prestashop_export_template"
+                        string="Export Templates"
+                        type="object"
+                        class="oe_highlight" />
+
+                </xpath>
+            </field>
+        </record>
+        <record id="export_prestashop_products_form" model="ir.ui.view">
+            <field name="name">export.prestashop.products.form</field>
+            <field name="model">export.products</field>
+          	<field name="inherit_id" ref="odoo_multi_channel_sale.export_odoo_products_form" />
+       		 <field name="arch" type="xml">
+                <xpath expr="//button[@name='cancel']" position="before">
+                	<button
+                         attrs="{ 'invisible':[('channel','not in',['prestashop'])]}"
+                		name="prestashop_export_product"
+                        string="Export products"
+                        type="object"
+                        class="oe_highlight" />
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
