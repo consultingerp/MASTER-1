@@ -74,10 +74,9 @@ class ImportPrestashopProducts(models.TransientModel):
             data = prestashop.get('product_option_values', id).get('product_option_value')
         except Exception as e:
             message += 'Error while getting the attribute data'
-        attr_val_name = data.get('name')
         if type(data['name']['language'])==list:
             for cat_name in data['name']['language']:
-                if cat_name['attrs']['id'] == self.channel_id.ps_language_id:
+                if cat_name['attrs']['id'] == self.channel_id.ps_language_id[-1:]:
                     attr_val_name = cat_name['value']
         else:
             attr_val_name = data.get('name')['language']['value']
@@ -87,10 +86,9 @@ class ImportPrestashopProducts(models.TransientModel):
             attr_data = prestashop.get('product_options', attr_id).get('product_option')
         except Exception as e:
             message += 'Error while getting the country data'
-        attr_name = attr_data.get('name')
         if type(attr_data['name']['language'])==list:
             for cat_name in attr_data['name']['language']:
-                if cat_name['attrs']['id'] == self.channel_id.ps_language_id:
+                if cat_name['attrs']['id'] == self.channel_id.ps_language_id[-1:]:
                     attr_name = cat_name['value']
         else:
             attr_name = attr_data.get('name')['language']['value']
@@ -205,7 +203,6 @@ class ImportPrestashopProducts(models.TransientModel):
             else:
                 category_ids = [cat_data['id']]
             extra_categ_ids = ','.join(category_ids)
-        name = product_data.get('name')
         if type(product_data['name']['language'])==list:
             for pro_name in product_data['name']['language']:
                 if pro_name['attrs']['id'] == channel_id.ps_language_id[-1:]:
@@ -242,10 +239,9 @@ class ImportPrestashopProducts(models.TransientModel):
                 qty = self._get_stock(stock_id)
             vals['qty_available'] = qty
         data = product_data
-        description_sale = data.get('description_short')
         if type(data['description_short']['language'])==list:
             for pro_name in data['description_short']['language']:
-                if pro_name['attrs']['id'] == channel_id.ps_language_id:
+                if pro_name['attrs']['id'] == channel_id.ps_language_id[-1:]:
                     try:
                         description_sale = html2text.html2text(pro_name['value'])
                     except:
