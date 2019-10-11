@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_website_config_settings_gmci_inherit" model="ir.ui.view">
+        <field name="name">General settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <div id="emails" position='after'>
+                <h2>Google Merchant Center Integration</h2><br/>
+                <div class="row mt16 o_settings_container" name="gmc">
+                    <div class="col-xs-12 o_setting_box">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <div>
+                                    <field name="google_content_client_id" class="oe_inline"/>
+                                    <label for="google_content_client_id"/>
+                                </div>
+                                <div>
+                                    <field name="google_content_client_secret" class="oe_inline"/>
+                                    <label for="google_content_client_secret"/>
+                                </div>
+                                <div>
+                                    <field name="google_content_uri" widget="url" text="Authorize Account" class="oe_inline oe_bold" target="_blank"/>
+                                </div>
+                                <div>
+                                    <button string="Sync New Products" type="object" name="sync_gmc_products" class="oe_highlight oe_inline"/>
+                                    <button string="ReSync Old Products" type="object" name="re_sync_gmc_products" class="oe_highlight oe_inline"/>
+                                    <button string="Delete All Products" type="object" name="delete_products_from_gmc" class="oe_highlight oe_inline"/>
+                                    <field name="google_content_authorization_code" invisible="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </field>
+   </record>
+</odoo>
