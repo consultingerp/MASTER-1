@@ -74,6 +74,7 @@ class ImportPrestashopProducts(models.TransientModel):
             data = prestashop.get('product_option_values', id).get('product_option_value')
         except Exception as e:
             message += 'Error while getting the attribute data'
+        attr_val_name = data.get('name')
         if type(data['name']['language'])==list:
             for cat_name in data['name']['language']:
                 if cat_name['attrs']['id'] == self.channel_id.ps_language_id:
