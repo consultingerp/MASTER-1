@@ -86,6 +86,7 @@ class ImportPrestashopProducts(models.TransientModel):
             attr_data = prestashop.get('product_options', attr_id).get('product_option')
         except Exception as e:
             message += 'Error while getting the country data'
+        attr_name = attr_data.get('name')
         if type(attr_data['name']['language'])==list:
             for cat_name in attr_data['name']['language']:
                 if cat_name['attrs']['id'] == self.channel_id.ps_language_id:
