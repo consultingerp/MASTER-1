@@ -111,7 +111,7 @@ class ImportPrestashopCategories(models.TransientModel):
         # parent_id = int(data.get('id_parent'))
         if type(data['name']['language'])==list:
             for cat_name in data['name']['language']:
-                if cat_name['attrs']['id'] == self.channel_id.ps_language_id:
+                if cat_name['attrs']['id'] == self.channel_id.ps_language_id[-1:]:
                     name = cat_name['value']
         else:
             name = data.get('name')['language']['value']
