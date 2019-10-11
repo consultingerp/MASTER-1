@@ -208,7 +208,7 @@ class ImportPrestashopProducts(models.TransientModel):
         name = product_data.get('name')
         if type(product_data['name']['language'])==list:
             for pro_name in product_data['name']['language']:
-                if pro_name['attrs']['id'] == right(channel_id.ps_language_id, 1):
+                if pro_name['attrs']['id'] == channel_id.ps_language_id[-1:]:
                     name = pro_name['value']
         else:
             name = product_data.get('name')['language']['value']
