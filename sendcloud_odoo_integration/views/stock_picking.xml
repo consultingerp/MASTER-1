@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="sendcloud_parameter_view" model="ir.ui.view">
+            <field name="name">stock.picking</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position='inside'>
+                    <page string="Sendcloud Information">
+                        <group>
+                            <group>
+                                <field name="sendcloud_parcel_id" readonly="1"/>
+                                <field name="sendcloud_shipment_uuid" readonly="1"/>
+                                <field name="sendcloud_external_order_id" readonly="1"/>
+                                <field name="sendcloud_external_shipment_id" readonly="1" />
+                                <field name="sendcloud_label_url" readonly="1"/>
+                                <field name="sendcloud_tracking_page_url" readonly="1" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
