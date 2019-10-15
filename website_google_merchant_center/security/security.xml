@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <record id="group_google_merchant_center" model="res.groups">
+        <field name="name">Google Merchant Center User</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="comment">Google Merchant Center User</field>
+    </record>
+
+    <record model="res.users" id="base.user_root">
+        <field eval="[(4,ref('group_google_merchant_center'))]" name="groups_id"/>
+    </record>
+
+</data>
+</odoo>

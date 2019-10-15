@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="google_success">
+        <html>
+            <head>
+                <script type="text/javascript">
+                    function close_popup(){
+                        var downloadButton = document.getElementById("download");
+                        var counter = 6;
+                        var newElement = document.createElement("p");
+                        newElement.innerHTML = "This Window will be closed automatically in 6 seconds.";
+                        var id;
+
+                        downloadButton.parentNode.replaceChild(newElement, downloadButton);
+
+                        id = setInterval(function() {
+                            counter--;
+                            if(counter &lt; 0) {
+                                newElement.parentNode.replaceChild(downloadButton, newElement);
+                                window.close();
+                            } else {
+                                newElement.innerHTML = "This Window will be closed automatically " + counter.toString() + " seconds. You can close this window manually also.";
+                            }
+                        }, 1000);
+                    }
+                </script>
+            </head>
+            <body onLoad="setTimeout('close_popup()', 0)">
+               <div class="oe_structure oe_empty">
+                   <div id="wrap">
+                        <div class="oe_structure">
+                            <div class="container">
+                                Authorization successful.
+                                <div>
+                                    <span id="download"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </html>
+    </template>
+
+    <template id="google_fail">
+        <html>
+            <head>
+                <script type="text/javascript">
+                    function close_popup(){
+                        var downloadButton = document.getElementById("download");
+                        var counter = 6;
+                        var newElement = document.createElement("p");
+                        newElement.innerHTML = "This Window will be closed automatically in 6 seconds.";
+                        var id;
+
+                        downloadButton.parentNode.replaceChild(newElement, downloadButton);
+
+                        id = setInterval(function() {
+                            counter--;
+                            if(counter &lt; 0) {
+                                newElement.parentNode.replaceChild(downloadButton, newElement);
+                                window.close();
+                            } else {
+                                newElement.innerHTML = "This Window will be closed automatically " + counter.toString() + " seconds. You can close this window manually also.";
+                            }
+                        }, 1000);
+                    }
+                </script>
+            </head>
+            <body onLoad="setTimeout('close_popup()', 0)">
+               <div class="oe_structure oe_empty">
+                   <div id="wrap">
+                        <div class="oe_structure">
+                            <div class="container">
+                                Authorization unsuccessful.
+                                This Window will be closed automatically.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </html>
+    </template>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+        <!-- Resource: merchant.center.category -->
+        <record id="product_merchant_category_sports" model="merchant.center.category">
+            <field name="name">Sporting Goods</field>
+        </record>
+
+        <record id="product_merchant_category_sports_athletics" model="merchant.center.category">
+            <field name="parent_id" ref="product_merchant_category_sports"/>
+            <field name="name">Athletics</field>
+        </record>
+
+        <record id="product_merchant_category_sports_athletics_cricket" model="merchant.center.category">
+            <field name="parent_id" ref="product_merchant_category_sports_athletics"/>
+            <field name="name">Cricket</field>
+        </record>
+
+        <!-- Resource: merchant.center.brand -->
+        <record id="product_merchant_brand_puma" model="merchant.center.brand">
+            <field name="name">Puma</field>
+        </record>
+
+    </data>
+</odoo>
