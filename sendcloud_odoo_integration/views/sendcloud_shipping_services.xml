@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sendcloud_shipping_services" model="ir.ui.view">
+        <field name="name">Sendcloud Shipping Services</field>
+        <field name="model">sendcloud.shipping.services</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sendcloud_carrier_name"/>
+                <field name="sendcloud_service_name"/>
+                <field name="sendcloud_service_id"/>
+                <field name="min_weight"/>
+                <field name="max_weight"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_sendcloud_shipping_services" model="ir.ui.view">
+        <field name="name">sendcloud.shipping.services</field>
+        <field name="model">sendcloud.shipping.services</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Sendcloud Shipping Service">
+                        <group>
+                            <field name="sendcloud_carrier_name"/>
+                            <field name="sendcloud_service_name"/>
+                        </group>
+                        <group>
+                            <field name="sendcloud_service_id"/>
+                            <field name="min_weight"/>
+                            <field name="max_weight"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="actionid_sendcloud_shipping_services"
+            model="ir.actions.act_window">
+        <field name="name">Sendcloud Shipping Services</field>
+        <field name="res_model">sendcloud.shipping.services</field>
+        <field name='view_type'>form</field>
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Retrieve sendcloud shipping services
+            </p>
+        </field>
+    </record>
+    <menuitem name="Sendcloud Shipping Services"
+              id="sendcloud_shipping_services" parent="sale.menu_sales_config"
+              action="actionid_sendcloud_shipping_services"/>
+</odoo>

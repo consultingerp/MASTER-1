@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sendcloud_credential_configuration" model="ir.ui.view">
+        <field name="name">Sendcloud Configuration</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Sendcloud Configuration">
+                    <group>
+                        <field name="use_sendcloud_shipping_provider"/>
+                    </group>
+                    <group attrs="{'invisible': [('use_sendcloud_shipping_provider', '!=', True)],'required':[('use_sendcloud_shipping_provider','=',True)]}">
+                        <field name="sendcloud_api_key"/>
+                        <field name="sendcloud_api_secret"/>
+                        <field name="sendcloud_api_url"/>
+                    </group>
+                    <group>
+                        <button name="get_shipping_services" type="object" class="oe_inline oe_link"
+                                attrs="{'invisible': [('use_sendcloud_shipping_provider', '!=', True)]}">
+                            <i class="fa fa-arrow-right"/>
+                            Get Shipping Services
+                        </button>
+                    </group>
+
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
